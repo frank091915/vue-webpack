@@ -2,9 +2,7 @@
 import Vue from "vue"
 import App from "./app.vue"
 
-import "./css/index.css"
-import "./css/stylus.styl"
-import "./assets/images/vueJs.jpg"
+import  "../assets/style/global.styl"
 
 // 初始化一个vue实例，然后调用方法，创建一个节点，插入html中，将vue渲染出来的dom挂在到该节点中
 var mountDom=document.createElement('div')

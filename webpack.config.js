@@ -32,8 +32,18 @@ const config = {
         // css-loader将css代码编译，而style-loader将编译后的代码放入网页中，而webpack加载顺序是从右到左，所以style-loader放在右边
       },
       {
-        test: /\.styl$/,
-        use: ['style-loader','css-loader',"stylus-loader"]
+        test: /\.styl(us)?$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          'stylus-loader'
+        ]
       },
       {
         test:/\.(gif|jpeg|png|svg|jpg)$/,
@@ -67,6 +77,7 @@ const config = {
 
 // 如果process.NODE_ENV是否为development,修改config
 if(isDev){
+  config.devtool='#cheap-module-eval-source-map'
   config.devServer = {
     port:'8088',
     host:"0.0.0.0",
@@ -74,11 +85,13 @@ if(isDev){
     overlay:{
       error:true,
     },
-    hot:true,
     // 这个选项开启后可以webpack打包后，遇到错误直接在页面上打印出来
+    hot:true,
+    // open:true,
   }
   config.plugins.push(
-    new webpack.HashedModuleIdsPlugin()
+    new webpack.HashedModuleIdsPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   )
   config.devtool='#cheap-nodule-eval-souce-map'
 }
