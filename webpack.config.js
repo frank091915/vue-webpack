@@ -27,6 +27,10 @@ const config = {
         loader:'vue-loader'
       },
       {
+        test:/\.jsx$/,
+        loader:'babel-loader'
+      },
+      {
         test: /\.css$/,
         use: ['style-loader','css-loader']
         // css-loader将css代码编译，而style-loader将编译后的代码放入网页中，而webpack加载顺序是从右到左，所以style-loader放在右边

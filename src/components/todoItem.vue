@@ -1,40 +1,28 @@
 <template>
-    <div id="app" >
-        <div id="cover"></div>
-        <Header></Header>
-        <TodoItem></TodoItem>
-        <Footer></Footer>
-    </div>
+  <div id="toduItem">
+    <Input></Input>
+  </div>
 </template>
 
 <script>
-    //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-    //例如：import 《组件名称》 from '《组件路径》';
-    import Header from "./components/header.vue"
-    import Footer from "./components/footer.jsx"
-    import TodoItem from "./components/todoItem.vue"
-export default {
+  //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
+  //例如：import 《组件名称》 from '《组件路径》';
+  import Input from "./input.vue"
+  export default {
 //import引入的组件需要注入到对象中才能使用
-    components: {},
+    components: {
+      Input,
+    },
     data() {
 //这里存放数据
-        return {
-            name:'今晚打老虎'
-        };
+      return {};
     },
-  components:{
-    Header,
-    Footer,
-    TodoItem
-  },
 //监听属性 类似于data概念
     computed: {},
 //监控data中的数据变化
     watch: {},
 //方法集合
-    methods: {
-
-    },
+    methods: {},
 //生命周期 - 创建完成（可以访问当前this实例）
     created() {
 
@@ -56,7 +44,12 @@ export default {
     }, //生命周期 - 销毁完成
     activated() {
     }, //如果页面有keep-alive缓存功能，这个函数会触发
-}
+  }
 </script>
-<style lang="stylus">
+<style lang="stylus"  scoped>
+  /* @import url(); 引入公共css类*/
+#toduItem
+  width 500px
+  min-height 100px
+  margin 20px auto
 </style>
