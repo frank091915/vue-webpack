@@ -58,7 +58,7 @@ const config = {
               // limit:1024,
               name:'dist/[name]_frank.[ext]'
             },
-            loader: "file-loader",
+            loader: "url-loader",
           }
         ]
       }
@@ -97,7 +97,6 @@ if(isDev){
     new webpack.HashedModuleIdsPlugin(),
     new webpack.HotModuleReplacementPlugin()
   )
-  config.devtool='#cheap-nodule-eval-souce-map'
 }
 console.log(process.env.NODE_ENV)
 

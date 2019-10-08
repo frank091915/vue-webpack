@@ -1,6 +1,12 @@
 <template>
   <div id="inputWrapper">
-      <input id="input" type="text" autofocus="autofocus" placeholder="接下来要做些什么呢">
+      <input id="input"
+             type="text"
+             autofocus="autofocus"
+             placeholder="接下来要做些什么呢"
+             @keydown.enter="addTodo"
+             v-model="todoContent"
+      >
   </div>
 </template>
 
@@ -13,14 +19,21 @@
     components: {},
     data() {
 //这里存放数据
-      return {};
+      return {
+        todoContent:''
+      };
     },
 //监听属性 类似于data概念
     computed: {},
 //监控data中的数据变化
     watch: {},
 //方法集合
-    methods: {},
+    methods: {
+      addTodo(){
+        this.$emit('addTodo',this.todoContent)
+        this.todoContent=''
+      }
+    },
 //生命周期 - 创建完成（可以访问当前this实例）
     created() {
 
